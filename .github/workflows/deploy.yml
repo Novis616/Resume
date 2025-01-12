@@ -3,7 +3,7 @@ name: Build and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Change to your default branch if not "main"
+      - main
 
 jobs:
   build:
@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies and update lock file
         run: |
           cd cv
-          npm install   # Обновляем lock файл
-          npm ci        # Используем npm ci для чистой установки
+          npm install
+          npm ci
 
       - name: Build the project
         run: |
@@ -32,5 +32,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Убедитесь, что токен используется
           publish_dir: cv/build
