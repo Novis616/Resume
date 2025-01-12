@@ -25,7 +25,7 @@ jobs:
 
       - name: Install dependencies and build
         run: |
-          cd cv-site
+          cd cv
           npm ci
           npm run build
 
@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: github-pages
-          path: cv-site/public
+          path: cv/public
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
