@@ -30,13 +30,13 @@ jobs:
           npm run build
 
       - name: List build directory  # Шаг для проверки содержимого директории сборки
-        run: ls -R cv/static
+        run: ls -R cv/public
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: cv/static
+          path: cv/public
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
