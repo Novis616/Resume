@@ -16,7 +16,7 @@
   <main class="bg-background text-text min-h-screen">
     <nav class="bg-primary text-white py-4">
       <div class="container mx-auto flex justify-between items-center">
-        <h1 class="font-heading text-2xl">Мое Резюме</h1>
+        <h1 class="font-heading text-2xl">Novis616</h1>
         <ul class="flex gap-6">
           {#each links as link}
             <li>
