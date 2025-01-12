@@ -3,12 +3,7 @@ name: Build and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Замените на вашу основную ветку, если она не main
-
-permissions:
-  contents: write  # Права для записи в репозиторий
-  pages: write     # Права для деплоя на GitHub Pages
-  id-token: write  # Права для работы с токенами
+      - main # Change to your default branch if not "main"
 
 jobs:
   build:
@@ -23,14 +18,19 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies and build
+      - name: Install dependencies and update lock file
         run: |
           cd cv
-          npm ci
+          npm install   # Обновляем lock файл
+          npm ci        # Используем npm ci для чистой установки
+
+      - name: Build the project
+        run: |
+          cd cv
           npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: cv/static  # Путь к папке с результатами сборки (cv/static)
+          publish_dir: cv/build
