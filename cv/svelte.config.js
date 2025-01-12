@@ -3,13 +3,14 @@ import adapter from '@sveltejs/adapter-static';
 export default {
 	kit: {
 		adapter: adapter({
-			// default options are shown. On some platforms
-			// these options are set automatically — see below
+			// Директории для сборки страниц и ассетов
 			pages: 'build',
 			assets: 'build',
-			fallback: undefined,
+			// Устанавливаем fallback для динамических маршрутов
+			fallback: 'index.html', // Используем fallback для динамических маршрутов
 			precompress: false,
-			strict: true
+			// Отключаем строгую проверку на динамичные маршруты
+			strict: false // Отключение строгой проверки для динамических маршрутов
 		})
 	}
 };
