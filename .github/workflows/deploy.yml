@@ -9,6 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write  # Добавьте разрешение на запись
+      pages: write     # Права для деплоя в Pages
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -18,19 +22,14 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies and update lock file
+      - name: Install dependencies and build
         run: |
           cd cv
           npm install
-          npm ci
-
-      - name: Build the project
-        run: |
-          cd cv
           npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Убедитесь, что токен используется
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: cv/build
