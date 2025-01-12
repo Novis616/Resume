@@ -13,7 +13,7 @@ const config = {
       strict: true
     }),
     paths: {
-      base: '/cv'
+      base: '/Resume'
     }
   }
 };
