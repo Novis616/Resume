@@ -29,14 +29,8 @@ jobs:
           npm ci
           npm run build
 
-      - name: List build folder
-        run: |
-          ls -la cv/build  # Если ваши файлы в cv/build
-          ls -la cv/static  # Если ваши файлы в cv/static
-
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: cv/build  # Путь к папке с результатами сборки (cv/static)
+          publish_dir: cv/static  # Путь к папке с результатами сборки (cv/static)
